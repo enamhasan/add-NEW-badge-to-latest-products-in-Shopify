@@ -1,0 +1,5 @@
+{% assign days = 7 %}
+{% assign period_time = days | times: 24 | times: 60 | times: 60 %}
+{% assign date_now = 'now' | date:'%s' %}
+{% assign date_finished = product.published_at | date:'%s' | plus: period_time | date:'%s' %}
+{% if date_finished > date_now %}<span class="badge-new">NEW</span>{% endif %}

@@ -1,3 +1,4 @@
+{% comment %} This snippet will display new badge to the products are published within 7 days. {% endcomment %}
 {% assign days = 7 %}
 {% assign period_time = days | times: 24 | times: 60 | times: 60 %}
 {% assign date_now = 'now' | date:'%s' %}

@@ -1,6 +1,8 @@
 {% comment %} This snippet will display new badge to the products are published within 7 days. {% endcomment %}
-{% assign days = 7 %}
-{% assign period_time = days | times: 24 | times: 60 | times: 60 %}
-{% assign date_now = 'now' | date:'%s' %}
-{% assign date_finished = product.published_at | date:'%s' | plus: period_time | date:'%s' %}
-{% if date_finished > date_now %}<span class="badge-new">NEW</span>{% endif %}
+{% assign product_creation_date = product.created_at| date: "%s" %}
+{% assign current_date = 'now' | date: '%s' %}
+{% assign time_diff = current_date | minus: product_creation_date %}
+{% if day_diff <= 7 %} 
+    {% include 'icon-new' %}
+ {% endif %}   
+    
